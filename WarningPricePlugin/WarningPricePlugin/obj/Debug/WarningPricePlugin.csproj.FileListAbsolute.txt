@@ -1,0 +1,10 @@
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\bin\Debug\WarningPricePlugin.dll
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\bin\Debug\WarningPricePlugin.pdb
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\bin\Debug\microsoft.identitymodel.dll
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\obj\Debug\WarningPricePlugin.csproj.AssemblyReference.cache
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\obj\Debug\WarningPricePlugin.csproj.CoreCompileInputs.cache
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\obj\Debug\WarningPricePlugin.csproj.CopyComplete
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\obj\Debug\WarningPricePlugin.dll
+C:\Users\karol\source\repos\WarningPricePlugin\WarningPricePlugin\obj\Debug\WarningPricePlugin.pdb

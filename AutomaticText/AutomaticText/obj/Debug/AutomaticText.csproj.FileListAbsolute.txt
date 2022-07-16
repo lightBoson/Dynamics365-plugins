@@ -1,0 +1,10 @@
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\bin\Debug\AutomaticText.dll
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\bin\Debug\AutomaticText.pdb
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\bin\Debug\Microsoft.IdentityModel.dll
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\obj\Debug\AutomaticText.csproj.AssemblyReference.cache
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\obj\Debug\AutomaticText.csproj.CoreCompileInputs.cache
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\obj\Debug\AutomaticText.csproj.CopyComplete
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\obj\Debug\AutomaticText.dll
+C:\Users\karol\source\repos\AutomaticText\AutomaticText\obj\Debug\AutomaticText.pdb

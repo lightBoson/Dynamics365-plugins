@@ -1,0 +1,9 @@
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\bin\Debug\DeleteOrder.dll
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\bin\Debug\DeleteOrder.pdb
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\bin\Debug\microsoft.identitymodel.dll
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\obj\Debug\DeleteOrder.csproj.AssemblyReference.cache
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\obj\Debug\DeleteOrder.csproj.CoreCompileInputs.cache
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\obj\Debug\DeleteOrder.csproj.CopyComplete
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\obj\Debug\DeleteOrder.dll
+C:\Users\karol\source\repos\DeleteOrder\DeleteOrder\obj\Debug\DeleteOrder.pdb
