@@ -4,6 +4,8 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Sdk.Messages;
 using System.Collections.Generic;
+using System.Globalization;
+
 
 
 namespace CreatNote
@@ -28,12 +30,19 @@ namespace CreatNote
             Guid disassociatedProductId = reference.Id;
 
             EntityReferenceCollection complaintReferences = (EntityReferenceCollection)context.InputParameters["RelatedEntities"];
-            EntityReference complaintReference = complaintReferences[0];
+            EntityReference complaintReference = complaintReferences[0]; 
             if (complaintReference == null)
                 return;
+
+            RetrieveRequest requestComplaint = new RetrieveRequest();
+            requestComplaint.ColumnSet = new ColumnSet("ko_referencenumbercomplaintko");
+            requestComplaint.Target = new EntityReference("ko_complaintko", complaintReference.Id);
+            // Wykonaj zapytanie do complaint
+            RetrieveResponse responseComplaint = (RetrieveResponse)service.Execute(requestComplaint);
+            string complaintReferenceNumber = responseComplaint.Entity.GetAttributeValue<string>("ko_referencenumbercomplaintko");
             Guid complaintId = complaintReference.Id;
             EntityCollection productCollection = getSpecificCollection(service, relationship, complaintId, "ko_productko");
-            List<string> expensiveProductEntities = new List<string>();
+            List<string> expensiveProductNames = new List<string>();
             for (int i = 0; i < productCollection.Entities.Count; ++i)
             {
                 Entity productEntity = productCollection[i];
@@ -42,10 +51,10 @@ namespace CreatNote
                 decimal price = productEntity.GetAttributeValue<Money>("ko_price_ko").Value;
                 Guid testUid = new Guid("b5a64316-edfa-ec11-82e5-0022480947e8");
                 if (productEntity.Id == testUid && price >= 1000)
-                    expensiveProductEntities.Add(productEntity.Id.ToString());
+                    expensiveProductNames.Add(productEntity.GetAttributeValue<string>("ko_nameko").ToString());
             }
 
-            if (expensiveProductEntities.Count == 0)
+            if (expensiveProductNames.Count == 0)
                 return;
 
             Relationship contactRelationship = new Relationship();
@@ -58,16 +67,13 @@ namespace CreatNote
                 if (contact == null)
                     continue;
                 Entity Note = new Entity("annotation");
-                Guid EntityToAttachTo = Guid.Parse(contact.Id.ToString()); // The GUID of the incident
                 Note["objectid"] = new EntityReference("contact", contact.Id);
-                Note["subject"] = "Expensive product removed from the complaint";
-                Note["notetext"] = "The following products removed from complaint: " + String.Join(", ", expensiveProductEntities.ToArray());
+                Note["subject"] = "Expensive product removed from the complaint";     
+                Note["notetext"] = "The following products: " + String.Join(", ", expensiveProductNames.ToArray()) + " were removed from the Complaint number" + complaintReferenceNumber + "on " + DateTime.Now.ToString("dd/MM/yyyy") + " at " + DateTime.Now.ToString("hh:mm tt");
                 service.Create(Note);
               
             }
 
-
-            string toto = "toto";
         }
         private EntityCollection getSpecificCollection(IOrganizationService service, Relationship relationship, Guid complaintId, string entityName)
         {
