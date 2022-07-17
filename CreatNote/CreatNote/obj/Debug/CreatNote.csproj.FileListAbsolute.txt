@@ -1,0 +1,10 @@
+C:\Users\karol\source\repos\CreatNote\CreatNote\bin\Debug\CreatNote.dll
+C:\Users\karol\source\repos\CreatNote\CreatNote\bin\Debug\CreatNote.pdb
+C:\Users\karol\source\repos\CreatNote\CreatNote\bin\Debug\Microsoft.IdentityModel.dll
+C:\Users\karol\source\repos\CreatNote\CreatNote\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\karol\source\repos\CreatNote\CreatNote\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\karol\source\repos\CreatNote\CreatNote\obj\Debug\CreatNote.csproj.AssemblyReference.cache
+C:\Users\karol\source\repos\CreatNote\CreatNote\obj\Debug\CreatNote.csproj.CoreCompileInputs.cache
+C:\Users\karol\source\repos\CreatNote\CreatNote\obj\Debug\CreatNote.csproj.CopyComplete
+C:\Users\karol\source\repos\CreatNote\CreatNote\obj\Debug\CreatNote.dll
+C:\Users\karol\source\repos\CreatNote\CreatNote\obj\Debug\CreatNote.pdb
