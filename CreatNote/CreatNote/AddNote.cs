@@ -5,6 +5,7 @@ using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Sdk.Messages;
 using System.Collections.Generic;
 
+
 namespace CreatNote
 {
     public class AddNote : IPlugin
@@ -31,11 +32,50 @@ namespace CreatNote
             if (complaintReference == null)
                 return;
             Guid complaintId = complaintReference.Id;
+            EntityCollection productCollection = getSpecificCollection(service, relationship, complaintId, "ko_productko");
+            List<string> expensiveProductEntities = new List<string>();
+            for (int i = 0; i < productCollection.Entities.Count; ++i)
+            {
+                Entity productEntity = productCollection[i];
+                if (productEntity == null)
+                    continue;
+                decimal price = productEntity.GetAttributeValue<Money>("ko_price_ko").Value;
+                Guid testUid = new Guid("b5a64316-edfa-ec11-82e5-0022480947e8");
+                if (productEntity.Id == testUid && price >= 1000)
+                    expensiveProductEntities.Add(productEntity.Id.ToString());
+            }
+
+            if (expensiveProductEntities.Count == 0)
+                return;
+
+            Relationship contactRelationship = new Relationship();
+            contactRelationship.SchemaName = "ko_Contact_ko_ComplaintKO_ko_ComplaintKO";
+
+            EntityCollection contactCollection = getSpecificCollection(service, contactRelationship, complaintId, "contact");
+            for (int j = 0; j < contactCollection.Entities.Count; ++j)
+            {
+                Entity contact = contactCollection[j];
+                if (contact == null)
+                    continue;
+                Entity Note = new Entity("annotation");
+                Guid EntityToAttachTo = Guid.Parse(contact.Id.ToString()); // The GUID of the incident
+                Note["objectid"] = new EntityReference("contact", contact.Id);
+                Note["subject"] = "Expensive product removed from the complaint";
+                Note["notetext"] = "The following products removed from complaint: " + String.Join(", ", expensiveProductEntities.ToArray());
+                service.Create(Note);
+              
+            }
+
+
+            string toto = "toto";
+        }
+        private EntityCollection getSpecificCollection(IOrganizationService service, Relationship relationship, Guid complaintId, string entityName)
+        {
             // Stworz zapytanie
             QueryExpression query = new QueryExpression();
 
             // Skieruj zapytanie na konkretna tabele
-            query.EntityName = "ko_productko";
+            query.EntityName = entityName;
 
             // Zbierz wszystkie atrybuty tabeli
             query.ColumnSet = new ColumnSet(true);
@@ -63,18 +103,7 @@ namespace CreatNote
             RetrieveResponse response = (RetrieveResponse)service.Execute(request);
             RelatedEntityCollection rEntities = (RelatedEntityCollection)response.Entity.RelatedEntities;
             EntityCollection eCollection = rEntities[relationship];
-
-            for(int i = 0; i < eCollection.Entities.Count; ++i)
-            {
-                Entity productEntity = eCollection[i];
-                if (productEntity == null)
-                    continue;
-                decimal price = productEntity.GetAttributeValue<Money>("ko_price_ko").Value;
-                if (productEntity.Id == disassociatedProductId && price >= 1000)
-                    throw new InvalidPluginExecutionException("Co ty w ogole robisz. Kosztuje wiecej niz 1000");
-            }
-
-            string toto = "toto";
-        }
+            return eCollection;
+        }  
     }
 }
